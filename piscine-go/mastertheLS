@@ -1,0 +1,1 @@
+ls -t -A | paste  -sd ","
