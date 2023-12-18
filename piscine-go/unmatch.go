@@ -1,29 +1,26 @@
-package piscine
+package main
 
-// import "fmt"
+import "fmt"
 
 func Unmatch(a []int) int {
-	counts := make(map[int]int)
-
-	// Count occurrences of each element in the slice
-	for _, num := range a {
-		counts[num]++
-	}
-
-	// Find the element with an odd count (no pair)
-	for num, count := range counts {
-		if count%2 != 0 {
-			return num
+	count := make([]int, len(a))
+	for i := 0; i < len (a); i++ {
+		for j := 0; j < len(a); j++ {
+			if a[i] == a[j] {
+				count[i]++
+			} 
 		}
 	}
-
-	// If all elements have a pair, return -1
+	for j := 0; j < len(a); j++ {
+		if count[j]%2 != 0 {
+			return a[j]
+		}
+	}
 	return -1
 }
 
-/*
 func main() {
-	a := []int{1, 2, 1, 1, 4, 5, 5, 4, 1, 7}
+	a := []int{1, 2, 3, 4, 5, 6, 7, 8}
 	unmatch := Unmatch(a)
 	fmt.Println(unmatch)
-} */
+}
